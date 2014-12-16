@@ -65,9 +65,9 @@
       var score = parseInt((minAttempts / status.args) * 100, 10);
       var message = getEndGameMessage(score);
 
-      document.getElementById('memory--end-game-message').innerText = message;
-      document.getElementById('memory--end-game-score').innerText =
-          'Score: ' + score + '/100';
+      document.getElementById('memory--end-game-message').textContent = message;
+      document.getElementById('memory--end-game-score').textContent =
+          'Score: ' + score + ' / 100';
 
       document.getElementById("memory--end-game-modal").classList.toggle('show');
     }
