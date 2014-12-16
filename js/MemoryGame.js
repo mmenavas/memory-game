@@ -170,7 +170,6 @@ var MemoryGame = {
 
             if (isMistake) {
               this.mistakes++;
-              console.log("Mistakes = " + this.mistakes);
             }
 
             revealedValues.push(this.cards[cardSelection[0]].value);
@@ -188,7 +187,7 @@ var MemoryGame = {
               revealedValues = [];
               status.code = 4,
               status.message = 'GAME OVER! Attempts: ' + this.attempts +
-                  ' Mistakes: ' + this.mistakes;
+                  ', Mistakes: ' + this.mistakes;
             }
             else {
               status.code = 2,
