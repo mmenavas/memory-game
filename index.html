@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Memory Workout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/MemoryGame.js" type="text/javascript"></script>
+    <script src="js/Card.js" type="text/javascript"></script>
+    <link href="css/MemoryGame.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <section id="memory--settings-modal" class="valign-table modal show">
+      <div class="valign-cell">
+        <form>
+          <h2 class="memory--settings-label">Grid Settings</h2>
+          <select id="memory--settings-grid">
+            <option value="2x3">2 x 3</option>
+            <option value="3x4">3 x 4</option>
+            <option value="4x5">4 x 5</option>
+            <option value="5x6">5 x 6</option>
+          </select>
+          <input id="memory--settings-reset" type="submit" value="Reset" />
+        </form>
+      </div>
+    </section>
+    <section id="memory--end-game-modal" class="valign-table modal">
+      <div class="valign-cell">
+        <div class="wrapper">
+          <h2 id="memory--end-game-message"></h2>
+          <h3 id="memory--end-game-score"></h3>
+        </div>
+      </div>
+    </section>
+    <section id="memory--app-container">
+      <ul id="memory--cards">
+      </ul>
+    </section>
+    <section class="memory--menu-bar">
+      <div class="inner">
+        <div class="left"><h1 class="memory--app-name">Memory</h1></div>
+        <div class="right"><a href="#settings"><img id="memory--settings-icon" src="images/gear.png" /></a></div>
+      </div>
+    </section>
+    <script src="js/BrowserInterface.js" type="text/javascript"></script>
+  </body>
+</html>

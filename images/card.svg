@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="144" height="108" viewBox="0, 0, 144, 108">
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="333.395" y1="457.777" x2="258.531" y2="360.525">
+      <stop offset="0" stop-color="#E12E00"/>
+      <stop offset="1" stop-color="#FF8626"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1" transform="translate(-216, -360)">
+    <g id="card">
+      <path d="M216,360 L360,360 L360,468 L216,468 L216,360 z" fill="url(#Gradient_1)"/>
+      <g id="question-mark">
+        <path d="M281.66,435.35 L295.595,435.316 L295.595,424.508 C295.595,421.544 296.975,418.75 300.621,416.339 C304.275,413.978 314.523,409.072 314.523,396.268 C314.523,383.447 303.781,374.655 294.751,372.755 C285.722,370.913 275.923,372.148 268.989,379.739 C262.753,386.561 261.477,391.936 261.477,403.821 L275.412,403.821 L275.412,401.044 C275.412,394.759 276.144,388.053 285.173,386.212 C290.124,385.197 294.755,386.765 297.499,389.459 C300.659,392.551 300.692,399.469 295.649,402.874 L287.805,408.199 C283.223,411.188 281.664,414.468 281.664,419.232 L281.664,435.35 z" fill="#FFFFFF" fill-opacity="0.75"/>
+        <path d="M281.569,441.645 L295.703,441.645 L295.703,456 L281.569,456 z" fill="#FFFFFF" fill-opacity="0.75"/>
+      </g>
+    </g>
+  </g>
+</svg>

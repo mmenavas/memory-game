@@ -1,0 +1,238 @@
+html {
+  width:100%;
+  height:100%;
+}
+body {
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+}
+
+.modal {
+  position: fixed;
+  height: 90%;
+  right: 0;
+  top: 0;
+  visibility: hidden;
+  z-index: 3;
+  width: 100%;
+}
+.modal.show {
+  visibility: visible;
+}
+
+.valign-table {
+  display: table;
+}
+.valign-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#memory--app-container {
+  background-color: #0061a8;
+  width:100%;
+  height:90%;
+}
+
+.memory--menu-bar {
+  width:100%;
+  background-color: #222;
+  height:10%;
+  display:table;
+}
+
+.memory--menu-bar .inner {
+  display:table-cell;
+  vertical-align:middle;
+}
+.memory--menu-bar .left {
+  text-align: left;
+  float:left;
+  width:50%;
+}
+.memory--menu-bar .right {
+  text-align: right;
+  float:right;
+  width:50%;
+}
+.memory--app-name {
+  color:#ccc;
+  font-size:26px;
+  margin:0;
+  padding:1px 4px;
+  text-transform: uppercase;
+  font-family: "Courier New";
+  letter-spacing: 2px;
+}
+#memory--settings-icon {
+  height: 24px;
+  display: block;
+  padding:4px 8px;
+  float: right;
+}
+
+#memory--end-game-modal .wrapper {
+  background-color: rgba(0, 0, 0, .86);
+  text-align: center;
+  color:#ccc;
+  padding:8px 0;
+}
+#memory--end-game-modal h2,
+#memory--end-game-modal h3 {
+  margin:0;
+  margin-bottom: 4px;
+}
+
+#memory--settings-modal {
+  background-color: rgba(0, 0, 0, .86);
+  z-index: 4;
+}
+#memory--settings-modal form {
+  min-width:240px;
+  width:50%;
+  margin:0 auto;
+  text-align: center;
+  color:#ccc;
+}
+
+.memory--settings-label {
+  margin:8px 0;
+}
+
+#memory--settings-grid,
+#memory--settings-reset {
+  width:100%;
+  margin-bottom:16px;
+  font-size:18px;
+  background:transparent;
+  color:#ccc;
+  height:50px;
+  text-align: center;
+}
+
+#memory--settings-grid option {
+  padding-top:5px;
+  padding-bottom:5px;
+}
+
+#memory--settings-reset {
+  border-radius:5px;
+  border:2px solid #ccc;
+  cursor: pointer;
+}
+
+#memory--cards {
+  margin:0 auto;
+  padding:0;
+  height:100%;
+  list-style-type: none;
+  list-style-image: none;
+  position:relative;
+}
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000;
+  float:left;
+}
+
+/* flip the pane when clicked */
+.flip-container.clicked .flipper {
+  transform: rotateY(180deg);
+}
+
+/* flip speed goes here */
+.flipper {
+  width:90%;
+  height:90%;
+  margin:0% auto;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  top:5%;
+  bottom:5%;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  width:100%;
+  height:100%;
+  display: block;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+  background-color: #999;
+  border-radius: 5%;
+
+  background-image: url(../images/card.svg);
+  background-position:50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+  background-color: #fff;
+  border-radius: 5%;
+  background-position:50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.back.card-1 {
+  background-image: url(../images/fruits/apple.jpg);
+}
+.back.card-2 {
+  background-image: url(../images/fruits/fig.jpg);
+}
+.back.card-3 {
+  background-image: url(../images/fruits/grape.jpg);
+}
+.back.card-4 {
+  background-image: url(../images/fruits/kiwi.jpg);
+}
+.back.card-5 {
+  background-image: url(../images/fruits/lemon.jpg);
+}
+.back.card-6 {
+  background-image: url(../images/fruits/lime.jpg);
+}
+.back.card-7 {
+  background-image: url(../images/fruits/mango.jpg);
+}
+.back.card-8 {
+  background-image: url(../images/fruits/melon.jpg);
+}
+.back.card-9 {
+  background-image: url(../images/fruits/orange.jpg);
+}
+.back.card-10 {
+  background-image: url(../images/fruits/peach.jpg);
+}
+.back.card-11 {
+  background-image: url(../images/fruits/pear.jpg);
+}
+.back.card-12 {
+  background-image: url(../images/fruits/pinapple.jpg);
+}
+.back.card-13 {
+  background-image: url(../images/fruits/plum.jpg);
+}
+.back.card-14 {
+  background-image: url(../images/fruits/raspberry.jpg);
+}
+.back.card-15 {
+  background-image: url(../images/fruits/strawberry.jpg);
+}
+
