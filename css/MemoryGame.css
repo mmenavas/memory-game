@@ -170,7 +170,7 @@ body {
   z-index: 2;
   /* for firefox 31 */
   transform: rotateY(0deg);
-  background-color: #999;
+  background-color: #e12d00;
   border-radius: 5%;
 
   background-image: url(../images/card.svg);
