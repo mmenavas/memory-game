@@ -95,6 +95,11 @@
 
   // Build grid of cards
   var buildLayout = function (cards, rows, columns) {
+    if (!cards.length) {
+      return;
+    }
+
+
     var memoryCards = document.getElementById("memory--cards");
     var index = 0;
 
@@ -134,8 +139,13 @@
       memoryCards.style.top = 0;
     }
 
-    // @TODO Update on resize
   };
+
+  // Update on resize
+  window.addEventListener('resize', function() {
+    buildLayout($.cards, $.settings.rows, $.settings.columns);
+    console.log("resizing");
+  }, true);
 
   // Build single card
   var buildCardNode = function (index, value, isFaceUp, width, height) {
