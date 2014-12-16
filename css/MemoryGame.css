@@ -14,12 +14,15 @@ body {
   height: 90%;
   right: 0;
   top: 0;
-  visibility: hidden;
   z-index: 3;
   width: 100%;
+  visibility: hidden;
+  opacity:0;
+  transition:opacity 0.4s linear;
 }
 .modal.show {
   visibility: visible;
+  opacity:1;
 }
 
 .valign-table {
@@ -133,13 +136,15 @@ body {
 }
 /* entire container, keeps perspective */
 .flip-container {
-  perspective: 1000;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
   float:left;
 }
 
 /* flip the pane when clicked */
 .flip-container.clicked .flipper {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
 
 /* flip speed goes here */
@@ -149,6 +154,7 @@ body {
   margin:0% auto;
   transition: 0.6s;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   position: relative;
   top:5%;
   bottom:5%;
@@ -160,6 +166,7 @@ body {
   height:100%;
   display: block;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
@@ -170,6 +177,7 @@ body {
   z-index: 2;
   /* for firefox 31 */
   transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
   background-color: #e12d00;
   border-radius: 5%;
 
@@ -183,6 +191,7 @@ body {
 /* back, initially hidden pane */
 .back {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
   background-color: #fff;
   border-radius: 5%;
   background-position:50% 50%;
