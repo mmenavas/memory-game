@@ -172,7 +172,7 @@ var MemoryGame = {
       }
       else {
         status.code = 0,
-        status = 'Card is already facing up.';
+        status.message = 'Card is already facing up.';
       }
 
       return status;
@@ -181,4 +181,3 @@ var MemoryGame = {
   })()
 
 };
-
