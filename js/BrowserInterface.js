@@ -61,8 +61,7 @@
       }.bind(status), 500);
     }
     else if (status.code == 4) {
-      var minAttempts = ($.settings.rows * $.settings.columns) / 2;
-      var score = parseInt((minAttempts / status.args) * 100, 10);
+      var score = parseInt((($.attempts - $.mistakes) / $.attempts) * 100, 10);
       var message = getEndGameMessage(score);
 
       document.getElementById('memory--end-game-message').textContent = message;
@@ -144,7 +143,6 @@
   // Update on resize
   window.addEventListener('resize', function() {
     buildLayout($.cards, $.settings.rows, $.settings.columns);
-    console.log("resizing");
   }, true);
 
   // Build single card

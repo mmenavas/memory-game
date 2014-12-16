@@ -14,11 +14,13 @@
  */
 MemoryGame.Card = function(value) {
   this.value = value;
-  this.isFaceUp = false;
-  this.reset = function() {
-    this.isFaceUp = false;
+  this.isRevealed = false;
+
+  this.reveal = function() {
+    this.isRevealed = true;
   }
-  this.flip = function() {
-    this.isFaceUp = !this.isFaceUp;
+
+  this.conceal = function() {
+    this.isRevealed = false;
   }
 };

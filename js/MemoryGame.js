@@ -26,6 +26,7 @@ var MemoryGame = {
   // Properties that indicate state
   cards: [], // Array of MemoryGame.Card objects
   attempts: 0, // How many pairs of cards were flipped before completing game
+  mistakes: 0, // How many pairs of cards were flipped before completing game
   isGameOver: false,
 
   /**
@@ -62,6 +63,7 @@ var MemoryGame = {
       this.settings.rows = rows;
       this.settings.columns = columns;
       this.attempts = 0;
+      this.mistakes = 0;
       this.isGameOver = false;
       this.createCards().shuffleCards();
     }
@@ -129,34 +131,64 @@ var MemoryGame = {
    */
   play: (function() {
     var cardSelection = [];
-    var faceUpCards = 0;
+    var revealedCards = 0;
+    var revealedValues = [];
 
     return function(index) {
       var status = {};
+      var value = this.cards[index].value;
 
-      if (!this.cards[index].isFaceUp) {
-        this.cards[index].flip();
+      if (!this.cards[index].isRevealed) {
+        this.cards[index].reveal();
         cardSelection.push(index);
         if (cardSelection.length == 2) {
           this.attempts++;
           if (this.cards[cardSelection[0]].value !=
               this.cards[cardSelection[1]].value) {
             // No match
-            this.cards[cardSelection[0]].reset();
-            this.cards[cardSelection[1]].reset();
+            this.cards[cardSelection[0]].conceal();
+            this.cards[cardSelection[1]].conceal();
+            /**
+             * Algorithm to determine a mistake.
+             * Check if the pair of at least
+             * one card has been revealed before
+             *
+             * indexOf return -1 if value is not found
+             */
+            var isMistake = false;
+
+            if (revealedValues.indexOf(this.cards[cardSelection[0]].value) === -1) {
+              revealedValues.push(this.cards[cardSelection[0]].value);
+            }
+            else {
+              isMistake = true;
+            }
+
+            if (revealedValues.indexOf(this.cards[cardSelection[1]].value) === -1) {
+              revealedValues.push(this.cards[cardSelection[1]].value);
+            }
+
+            if (isMistake) {
+              this.mistakes++;
+              console.log("Mistakes = " + this.mistakes);
+            }
+
+            revealedValues.push(this.cards[cardSelection[0]].value);
+
             status.code = 3,
-            status.message = 'No Match. Flipping cards back.';
+            status.message = 'No Match. Conceal cards.';
             status.args = cardSelection;
           }
           else {
-            faceUpCards += 2;
-            if (faceUpCards == this.cards.length) {
+            revealedCards += 2;
+            if (revealedCards == this.cards.length) {
               // Game over
               this.isGameOver = true;
-              faceUpCards = 0;
+              revealedCards = 0;
+              revealedValues = [];
               status.code = 4,
-              status.message = 'GAME OVER! Attempts: ' + this.attempts;
-              status.args = this.attempts;
+              status.message = 'GAME OVER! Attempts: ' + this.attempts +
+                  ' Mistakes: ' + this.mistakes;
             }
             else {
               status.code = 2,
