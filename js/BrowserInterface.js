@@ -98,7 +98,6 @@
       return;
     }
 
-
     var memoryCards = document.getElementById("memory--cards");
     var index = 0;
 
@@ -118,7 +117,7 @@
       for (var j = 0; j < columns; j++) {
         // Use cloneNode(true) otherwise only one node is appended
         memoryCards.appendChild(buildCardNode(
-            index, cards[index].value, cards[index].isFaceUp,
+            index, cards[index].value, cards[index].isRevealed,
             (100 / columns) + "%", (100 / rows) + "%"));
         index++;
       }
@@ -146,7 +145,7 @@
   }, true);
 
   // Build single card
-  var buildCardNode = function (index, value, isFaceUp, width, height) {
+  var buildCardNode = function (index, value, isRevealed, width, height) {
     var flipContainer = document.createElement("li");
     var flipper = document.createElement("div");
     var front = document.createElement("a");
@@ -156,7 +155,7 @@
     flipContainer.style.width = width;
     flipContainer.style.height = height;
     flipContainer.classList.add("flip-container");
-    if (isFaceUp) {
+    if (isRevealed) {
       flipContainer.classList.add("clicked");
     }
 
