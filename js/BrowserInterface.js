@@ -116,9 +116,8 @@
     for (var i = 0; i < rows; i++) {
       for (var j = 0; j < columns; j++) {
         // Use cloneNode(true) otherwise only one node is appended
-        memoryCards.appendChild(buildCardNode(
-            index, cards[index].value, cards[index].isRevealed,
-            (100 / columns) + "%", (100 / rows) + "%"));
+        memoryCards.appendChild(buildCardNode(index, cards[index],
+          (100 / columns) + "%", (100 / rows) + "%"));
         index++;
       }
     }
@@ -145,7 +144,7 @@
   }, true);
 
   // Build single card
-  var buildCardNode = function (index, value, isRevealed, width, height) {
+  var buildCardNode = function (index, card, width, height) {
     var flipContainer = document.createElement("li");
     var flipper = document.createElement("div");
     var front = document.createElement("a");
@@ -155,7 +154,7 @@
     flipContainer.style.width = width;
     flipContainer.style.height = height;
     flipContainer.classList.add("flip-container");
-    if (isRevealed) {
+    if (card.isRevealed) {
       flipContainer.classList.add("clicked");
     }
 
@@ -163,7 +162,10 @@
     front.classList.add("front");
     front.setAttribute("href", "#");
     back.classList.add("back");
-    back.classList.add("card-" + value);
+    back.classList.add("card-" + card.value);
+    if (card.isMatchingCard) {
+      back.classList.add("matching");
+    }
     back.setAttribute("href", "#");
 
     flipper.appendChild(front);

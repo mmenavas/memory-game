@@ -283,3 +283,50 @@ body {
 .back.card-15 {
   background-image: url(../images/fruits/strawberry.jpg);
 }
+
+/** Matching Cards **/
+.back.matching.card-1 {
+  background-image: url(../images/matching-fruits/apple.jpg);
+}
+.back.matching.card-2 {
+  background-image: url(../images/matching-fruits/fig.jpg);
+}
+.back.matching.card-3 {
+  background-image: url(../images/matching-fruits/grape.jpg);
+}
+.back.matching.card-4 {
+  background-image: url(../images/matching-fruits/kiwi.jpg);
+}
+.back.matching.card-5 {
+  background-image: url(../images/matching-fruits/lemon.jpg);
+}
+.back.matching.card-6 {
+  background-image: url(../images/matching-fruits/lime.jpg);
+}
+.back.matching.card-7 {
+  background-image: url(../images/matching-fruits/mango.jpg);
+}
+.back.matching.card-8 {
+  background-image: url(../images/matching-fruits/melon.jpg);
+}
+.back.matching.card-9 {
+  background-image: url(../images/matching-fruits/orange.jpg);
+}
+.back.matching.card-10 {
+  background-image: url(../images/matching-fruits/peach.jpg);
+}
+.back.matching.card-11 {
+  background-image: url(../images/matching-fruits/pear.jpg);
+}
+.back.matching.card-12 {
+  background-image: url(../images/matching-fruits/pinapple.jpg);
+}
+.back.matching.card-13 {
+  background-image: url(../images/matching-fruits/plum.jpg);
+}
+.back.matching.card-14 {
+  background-image: url(../images/matching-fruits/raspberry.jpg);
+}
+.back.matching.card-15 {
+  background-image: url(../images/matching-fruits/strawberry.jpg);
+}

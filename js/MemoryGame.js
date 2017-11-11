@@ -80,8 +80,10 @@ var MemoryGame = {
     var count = 0;
     var maxValue = (this.settings.columns * this.settings.rows) / 2;
     while (count < maxValue) {
+      // Card A
       cards[2 * count] = new this.Card(count + 1);
-      cards[2 * count + 1] = new this.Card(count + 1);
+      // Card B (matching card)
+      cards[2 * count + 1] = new this.Card(count + 1, true);
       count++;
     }
 
