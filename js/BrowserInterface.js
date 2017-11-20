@@ -11,7 +11,14 @@
  */
 (function($) {
 
-// Handle clicking on settings icon
+  /************ Start hard coded settings ******************/
+
+  // How long a non matching card is displayed once clicked.
+  var nonMatchingCardTime = 1000;
+
+  /************ End hard coded settings ******************/
+
+  // Handle clicking on settings icon
   var settings = document.getElementById('memory--settings-icon');
   var modal = document.getElementById('memory--settings-modal');
   var handleOpenSettings = function (event) {
@@ -20,7 +27,7 @@
   };
   settings.addEventListener('click', handleOpenSettings);
 
-// Handle settings form submission
+  // Handle settings form submission
   var reset = document.getElementById('memory--settings-reset');
   var handleSettingsSubmission = function (event) {
     event.preventDefault();
@@ -58,7 +65,7 @@
         var childNodes = document.getElementById('memory--cards').childNodes;
         childNodes[status.args[0]].classList.remove('clicked');
         childNodes[status.args[1]].classList.remove('clicked');
-      }.bind(status), 500);
+      }.bind(status), nonMatchingCardTime);
     }
     else if (status.code == 4) {
       var score = parseInt((($.attempts - $.mistakes) / $.attempts) * 100, 10);
