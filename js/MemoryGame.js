@@ -20,7 +20,8 @@ var MemoryGame = {
 
   settings: {
     rows: 2,
-    columns: 3
+    columns: 3,
+    images: 3, // Number of images
   },
 
   // Properties that indicate state
@@ -36,9 +37,10 @@ var MemoryGame = {
    *
    * @param {number} columns
    * @param {number} rows
+   * @param {number} number of card images
    * @return {array} shuffled cards
    */
-  initialize : function(rows, columns) {
+  initialize : function(rows, columns, images) {
     var validOptions = true;
 
     // Validate arguments
@@ -62,6 +64,7 @@ var MemoryGame = {
     if (validOptions) {
       this.settings.rows = rows;
       this.settings.columns = columns;
+      this.settings.images = images;
       this.attempts = 0;
       this.mistakes = 0;
       this.isGameOver = false;
@@ -73,17 +76,21 @@ var MemoryGame = {
 
   /**
    * Create an array of sorted cards
+   *
    * @return Reference to self object
    */
   createCards: function() {
     var cards = [];
+    var values = [];
     var count = 0;
     var maxValue = (this.settings.columns * this.settings.rows) / 2;
     while (count < maxValue) {
+      // Next random card value
+      var value = this.getRandomCardValue(values);
       // Card A
-      cards[2 * count] = new this.Card(count + 1);
+      cards[2 * count] = new this.Card(value);
       // Card B (matching card)
-      cards[2 * count + 1] = new this.Card(count + 1, true);
+      cards[2 * count + 1] = new this.Card(value, true);
       count++;
     }
 
@@ -93,7 +100,37 @@ var MemoryGame = {
   },
 
   /**
+   * Get a random value between 1 and this.settings.images that is not
+   * already in 'values'.
+   *
+   * @param {array} values List of random values already in use.
+   * @return {number}
+   */
+  getRandomCardValue: function(values) {
+    var valid = false;
+    var randomValue = 0;
+
+    while (!valid) {
+      randomValue = Math.floor(Math.random() * this.settings.images) + 1;
+      var found = false;
+      for (var index = 0; index < values.length; index++) {
+        if (randomValue === values[index]) {
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        valid = true;
+        values.push(randomValue); // Purposely modify the array parameter.
+      }
+    }
+
+    return randomValue;
+  },
+
+  /**
    * Rearrange elements in cards array
+   *
    * @return Reference to self object
    */
   shuffleCards: function() {
@@ -104,7 +141,7 @@ var MemoryGame = {
     // Shuffle cards
     while (shuffledCards.length < cards.length) {
 
-      // Random value between 0 and cards.length - 1
+      // Random value between 0 and cards.length
       randomIndex  = Math.floor(Math.random() * cards.length);
 
       // If element isn't false, add element to shuffled deck
