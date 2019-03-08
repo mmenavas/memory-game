@@ -16,6 +16,10 @@
   // How long a non matching card is displayed once clicked.
   var nonMatchingCardTime = 1000;
 
+  // Shuffle card images: How many different images are available to shuffle
+  // from?
+  var imagesAvailable = 15;
+
   /************ End hard coded settings ******************/
 
   // Handle clicking on settings icon
@@ -35,7 +39,7 @@
     var selectWidget = document.getElementById("memory--settings-grid").valueOf();
     var grid = selectWidget.options[selectWidget.selectedIndex].value;
     var gridValues = grid.split('x');
-    var cards = $.initialize(Number(gridValues[0]), Number(gridValues[1]));
+    var cards = $.initialize(Number(gridValues[0]), Number(gridValues[1]), imagesAvailable);
 
     if (cards) {
       document.getElementById('memory--settings-modal').classList.remove('show');
