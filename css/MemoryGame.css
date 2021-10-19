@@ -144,6 +144,8 @@ body {
   list-style-type: none;
   list-style-image: none;
   position:relative;
+  background-image: url(../images/background.jpg);
+  background-size: cover;
 }
 /* entire container, keeps perspective */
 .flip-container {
@@ -151,6 +153,16 @@ body {
   perspective: 1000px;
   float:left;
 }
+
+.flip-container.clicked {
+  opacity: 100;
+  transition: opacity 3s linear;
+}
+
+.flip-container.clicked.fade{
+  opacity: 0.0;
+}
+
 
 /* flip the pane when clicked */
 .flip-container.clicked .front {
@@ -170,8 +182,8 @@ body {
 
 /* flip speed goes here */
 .flipper {
-  width:90%;
-  height:90%;
+  width:98%;
+  height:98%;
   margin:0% auto;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -217,11 +229,21 @@ body {
   transform: rotateY(0deg);
   background-color: #e12d00;
   border-radius: 5%;
-  background-image: url(../images/card.svg);
-  background-position:50% 50%;
-  background-repeat: no-repeat;
-  background-size: contain;
+  /* background-image: url(../images/card.svg); */
+  /* background-position:50% 50%; */
+  /* background-repeat: no-repeat; */
+  /* background-size: contain; */
+  font-size: 10rem;
+}
 
+a.front {
+  text-decoration:none;
+  color: white;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  /* text-align: center; */
 }
 
 /* back, initially hidden pane */
@@ -237,6 +259,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+
 
 .back.card-1 {
   background-image: url(../images/fruits/apple.jpg);

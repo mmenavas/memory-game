@@ -70,7 +70,6 @@ var MemoryGame = {
       this.isGameOver = false;
       this.createCards().shuffleCards();
     }
-
     return this.cards;
   },
 
@@ -225,10 +224,12 @@ var MemoryGame = {
               revealedCards = 0;
               revealedValues = [];
               status.code = 4,
+              status.args = cardSelection;
               status.message = 'GAME OVER! Attempts: ' + this.attempts +
                   ', Mistakes: ' + this.mistakes;
             }
             else {
+              status.args = cardSelection;
               status.code = 2,
               status.message = 'Match.';
             }

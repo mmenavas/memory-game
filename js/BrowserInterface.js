@@ -47,6 +47,19 @@
       document.getElementById('memory--end-game-message').innerText = "";
       document.getElementById('memory--end-game-score').innerText = "";
       buildLayout($.cards, $.settings.rows, $.settings.columns);
+      // Needs to be refactored in a function.
+      const frontCardList = Array.from(document.querySelectorAll('.front'));
+      // const cardNumber = frontCardList.length;
+      let startNumber = 1;
+      frontCardList.forEach( (card) => {
+        card.innerText = startNumber++;
+        card.addEventListener('contextmenu', () => {
+          card.classList.add('fade')
+        });
+      });
+      
+
+
     }
 
   };
@@ -54,7 +67,6 @@
 
   // Handle clicking on card
   var handleFlipCard = function (event) {
-
     event.preventDefault();
 
     var status = $.play(this.index);
@@ -62,6 +74,14 @@
 
     if (status.code != 0 ) {
       this.classList.toggle('clicked');
+    }
+
+    if (status.code == 2) {
+      var audio = new Audio('../audio/correct-answer-ding-and-applause.mp3');
+      audio.play();
+      var childNodes = document.getElementById('memory--cards').childNodes;
+      childNodes[status.args[0]].classList.add('fade');
+      childNodes[status.args[1]].classList.add('fade');
     }
 
     if (status.code == 3 ) {
@@ -72,6 +92,11 @@
       }.bind(status), nonMatchingCardTime);
     }
     else if (status.code == 4) {
+
+      var childNodes = document.getElementById('memory--cards').childNodes;
+      childNodes[status.args[0]].classList.add('fade');
+      childNodes[status.args[1]].classList.add('fade');
+
       var score = parseInt((($.attempts - $.mistakes) / $.attempts) * 100, 10);
       var message = getEndGameMessage(score);
 
@@ -167,6 +192,7 @@
     flipContainer.classList.add("flip-container");
     if (card.isRevealed) {
       flipContainer.classList.add("clicked");
+      flipContainer.classList.add("camote");
     }
 
     flipper.classList.add("flipper");
