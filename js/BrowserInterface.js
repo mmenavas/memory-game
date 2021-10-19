@@ -49,19 +49,11 @@
       buildLayout($.cards, $.settings.rows, $.settings.columns);
       // Needs to be refactored in a function.
       const frontCardList = Array.from(document.querySelectorAll('.front'));
-      // const cardNumber = frontCardList.length;
       let startNumber = 1;
       frontCardList.forEach( (card) => {
         card.innerText = startNumber++;
-        card.addEventListener('contextmenu', () => {
-          card.classList.add('fade')
-        });
       });
-      
-
-
     }
-
   };
   reset.addEventListener('click', handleSettingsSubmission);
 
@@ -192,7 +184,6 @@
     flipContainer.classList.add("flip-container");
     if (card.isRevealed) {
       flipContainer.classList.add("clicked");
-      flipContainer.classList.add("camote");
     }
 
     flipper.classList.add("flipper");
